@@ -10,290 +10,79 @@
     :root {
       --bg: #0a0a0a;
       --surface: #111111;
-      --surface2: #161616;
       --border: #1e1e1e;
       --border2: #2a2a2a;
       --text: #f0f0f0;
       --muted: #555555;
       --muted2: #888888;
     }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      min-height: 100vh;
-    }
-
-    /* ── HOME PAGE ── */
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
     #homePage { display: block; }
     #subjectPage { display: none; }
 
-    .home-header {
-      text-align: center;
-      padding: 4rem 2rem 3rem;
-    }
-    .home-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 2.6rem;
-      letter-spacing: -0.04em;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-    .home-subtitle {
-      font-size: 0.78rem;
-      color: var(--muted2);
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
+    .home-header { text-align: center; padding: 4rem 2rem 3rem; }
+    .home-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.6rem; letter-spacing: -0.04em; color: var(--text); margin-bottom: 0.5rem; }
+    .home-subtitle { font-size: 0.78rem; color: var(--muted2); font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; }
 
-    .subjects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1px;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 2rem 4rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .subject-card {
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      border-right: 1px solid var(--border);
-      padding: 1.8rem 1.6rem;
-      cursor: pointer;
-      transition: background 0.2s;
-      position: relative;
-    }
+    .subjects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1px; max-width: 900px; margin: 0 auto; padding: 0 2rem 4rem; border-top: 1px solid var(--border); }
+    .subject-card { background: var(--bg); border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); padding: 1.8rem 1.6rem; cursor: pointer; transition: background 0.2s; position: relative; }
     .subject-card:hover { background: var(--surface); }
-    .subject-card.disabled {
-      cursor: default;
-      opacity: 0.35;
-    }
+    .subject-card.disabled { cursor: default; opacity: 0.3; }
     .subject-card.disabled:hover { background: var(--bg); }
+    .card-num { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 1rem; }
+    .card-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--text); letter-spacing: -0.01em; margin-bottom: 0.4rem; }
+    .card-meta { font-size: 0.72rem; color: var(--muted2); font-weight: 300; }
+    .card-arrow { position: absolute; top: 1.8rem; right: 1.6rem; font-size: 0.9rem; color: var(--muted); transition: transform 0.2s, color 0.2s; }
+    .subject-card:not(.disabled):hover .card-arrow { transform: translate(3px,-3px); color: var(--text); }
 
-    .card-num {
-      font-size: 0.65rem;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      margin-bottom: 1rem;
-      font-weight: 400;
-    }
-    .card-name {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--text);
-      letter-spacing: -0.01em;
-      margin-bottom: 0.4rem;
-    }
-    .card-meta {
-      font-size: 0.72rem;
-      color: var(--muted2);
-      font-weight: 300;
-    }
-    .card-arrow {
-      position: absolute;
-      top: 1.8rem;
-      right: 1.6rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-      transition: transform 0.2s, color 0.2s;
-    }
-    .subject-card:not(.disabled):hover .card-arrow {
-      transform: translate(3px, -3px);
-      color: var(--text);
-    }
-
-    /* ── SUBJECT PAGE ── */
-    .subject-header {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 2.5rem 2rem 0;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .back-btn {
-      font-size: 0.8rem;
-      color: var(--muted2);
-      cursor: pointer;
-      background: none;
-      border: none;
-      font-family: 'DM Sans', sans-serif;
-      letter-spacing: 0.05em;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: color 0.2s;
-      padding: 0;
-      flex-shrink: 0;
-    }
+    .subject-header { max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem 0; display: flex; align-items: center; gap: 1.5rem; }
+    .back-btn { font-size: 0.8rem; color: var(--muted2); cursor: pointer; background: none; border: none; font-family: 'DM Sans', sans-serif; letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; padding: 0; flex-shrink: 0; }
     .back-btn:hover { color: var(--text); }
-
     .subject-title-wrap { flex: 1; }
-    .subject-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.5rem;
-      letter-spacing: -0.02em;
-      color: var(--text);
-    }
-    .subject-subtitle {
-      font-size: 0.72rem;
-      color: var(--muted2);
-      margin-top: 0.2rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
+    .subject-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.5rem; letter-spacing: -0.02em; }
+    .subject-subtitle { font-size: 0.72rem; color: var(--muted2); margin-top: 0.2rem; letter-spacing: 0.05em; text-transform: uppercase; }
 
     .search-wrap { max-width: 860px; margin: 2rem auto 0; padding: 0 2rem; }
     .search-box { position: relative; }
-    .search-icon {
-      position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--muted);
-      font-size: 1rem;
-      pointer-events: none;
-    }
-    .search-input {
-      width: 100%;
-      background: var(--surface);
-      border: 1px solid var(--border2);
-      border-radius: 8px;
-      padding: 0.85rem 1rem 0.85rem 2.8rem;
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 300;
-      outline: none;
-      transition: border-color 0.2s;
-    }
+    .search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+    .search-input { width: 100%; background: var(--surface); border: 1px solid var(--border2); border-radius: 8px; padding: 0.85rem 1rem 0.85rem 2.8rem; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 300; outline: none; transition: border-color 0.2s; }
     .search-input:focus { border-color: #3a3a3a; }
     .search-input::placeholder { color: var(--muted); }
-
     .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
-    .chip {
-      padding: 0.35rem 0.85rem;
-      background: var(--surface);
-      border: 1px solid var(--border2);
-      border-radius: 20px;
-      font-size: 0.73rem;
-      color: var(--muted2);
-      cursor: pointer;
-      transition: all 0.15s;
-      font-family: 'DM Sans', sans-serif;
-    }
+    .chip { padding: 0.35rem 0.85rem; background: var(--surface); border: 1px solid var(--border2); border-radius: 20px; font-size: 0.73rem; color: var(--muted2); cursor: pointer; transition: all 0.15s; font-family: 'DM Sans', sans-serif; }
     .chip:hover { color: var(--text); border-color: #444; }
 
     .results-wrap { max-width: 860px; margin: 1.5rem auto 4rem; padding: 0 2rem; }
     .results-meta { font-size: 0.73rem; color: var(--muted); margin-bottom: 1rem; letter-spacing: 0.03em; }
-
     .cards { display: grid; gap: 1px; border-top: 1px solid var(--border); }
-    .card {
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      padding: 1.2rem 0;
-      transition: background 0.15s;
-    }
-    .card:hover { background: var(--surface); padding-left: 0.5rem; padding-right: 0.5rem; border-radius: 4px; margin: 0 -0.5rem; }
-    .card-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--text);
-      letter-spacing: -0.01em;
-      margin-bottom: 0.45rem;
-    }
-    .card-def {
-      font-size: 0.855rem;
-      color: #999;
-      line-height: 1.65;
-      font-weight: 300;
-    }
-
+    .card { background: var(--bg); border-bottom: 1px solid var(--border); padding: 1.2rem 0; }
+    .card-title { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.95rem; color: var(--text); letter-spacing: -0.01em; margin-bottom: 0.45rem; }
+    .card-def { font-size: 0.855rem; color: #999; line-height: 1.65; font-weight: 300; }
+    .card-diagram { margin-top: 0.8rem; background: #0d0d0d; border: 1px solid #1a1a1a; border-radius: 6px; padding: 0.5rem; }
+    .diagram-label { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem; }
     .empty { text-align: center; padding: 4rem 0; color: var(--muted); font-size: 0.875rem; }
-    .coming-soon-page {
-      text-align: center;
-      padding: 5rem 2rem;
-      color: var(--muted);
-      max-width: 860px;
-      margin: 0 auto;
-    }
-    .coming-soon-page h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.1rem;
-      color: #2a2a2a;
-      margin-bottom: 0.5rem;
-    }
   </style>
 </head>
 <body>
 
-<!-- HOME PAGE -->
 <div id="homePage">
   <div class="home-header">
     <div class="home-logo">IBVault</div>
     <div class="home-subtitle">IB subjects — definitions, concepts &amp; diagrams</div>
   </div>
-
   <div class="subjects-grid">
-    <div class="subject-card" onclick="openSubject('econ')">
-      <div class="card-num">01</div>
-      <div class="card-name">Economics</div>
-      <div class="card-meta">197 terms</div>
-      <span class="card-arrow">↗</span>
-    </div>
-    <div class="subject-card" onclick="openSubject('bio')">
-      <div class="card-num">02</div>
-      <div class="card-name">Biology</div>
-      <div class="card-meta">357 terms</div>
-      <span class="card-arrow">↗</span>
-    </div>
-    <div class="subject-card disabled">
-      <div class="card-num">03</div>
-      <div class="card-name">Physics</div>
-      <div class="card-meta">Coming soon</div>
-    </div>
-    <div class="subject-card disabled">
-      <div class="card-num">04</div>
-      <div class="card-name">Chemistry</div>
-      <div class="card-meta">Coming soon</div>
-    </div>
-    <div class="subject-card disabled">
-      <div class="card-num">05</div>
-      <div class="card-name">Psychology</div>
-      <div class="card-meta">Coming soon</div>
-    </div>
-    <div class="subject-card disabled">
-      <div class="card-num">06</div>
-      <div class="card-name">English Literature</div>
-      <div class="card-meta">Coming soon</div>
-    </div>
-    <div class="subject-card disabled">
-      <div class="card-num">07</div>
-      <div class="card-name">Business Management</div>
-      <div class="card-meta">Coming soon</div>
-    </div>
-    <div class="subject-card disabled">
-      <div class="card-num">08</div>
-      <div class="card-name">ESS</div>
-      <div class="card-meta">Coming soon</div>
-    </div>
-    <div class="subject-card disabled">
-      <div class="card-num">09</div>
-      <div class="card-name">Theory of Knowledge</div>
-      <div class="card-meta">Coming soon</div>
-    </div>
+    <div class="subject-card" onclick="openSubject('econ')"><div class="card-num">01</div><div class="card-name">Economics</div><div class="card-meta">197 terms + diagrams</div><span class="card-arrow">↗</span></div>
+    <div class="subject-card" onclick="openSubject('bio')"><div class="card-num">02</div><div class="card-name">Biology</div><div class="card-meta">357 terms</div><span class="card-arrow">↗</span></div>
+    <div class="subject-card disabled"><div class="card-num">03</div><div class="card-name">Physics</div><div class="card-meta">Coming soon</div></div>
+    <div class="subject-card disabled"><div class="card-num">04</div><div class="card-name">Chemistry</div><div class="card-meta">Coming soon</div></div>
+    <div class="subject-card disabled"><div class="card-num">05</div><div class="card-name">Psychology</div><div class="card-meta">Coming soon</div></div>
+    <div class="subject-card disabled"><div class="card-num">06</div><div class="card-name">English Literature</div><div class="card-meta">Coming soon</div></div>
+    <div class="subject-card disabled"><div class="card-num">07</div><div class="card-name">Business Management</div><div class="card-meta">Coming soon</div></div>
+    <div class="subject-card disabled"><div class="card-num">08</div><div class="card-name">ESS</div><div class="card-meta">Coming soon</div></div>
+    <div class="subject-card disabled"><div class="card-num">09</div><div class="card-name">Theory of Knowledge</div><div class="card-meta">Coming soon</div></div>
   </div>
 </div>
 
-<!-- SUBJECT PAGE -->
 <div id="subjectPage">
   <div class="subject-header">
     <button class="back-btn" onclick="goHome()">← All subjects</button>
@@ -302,7 +91,6 @@
       <div class="subject-subtitle" id="subjectSubtitle"></div>
     </div>
   </div>
-
   <div class="search-wrap">
     <div class="search-box">
       <span class="search-icon">⌕</span>
@@ -310,7 +98,6 @@
     </div>
     <div class="chips" id="chipsContainer"></div>
   </div>
-
   <div class="results-wrap">
     <div class="results-meta" id="resultsMeta"></div>
     <div class="cards" id="cardsContainer"></div>
@@ -318,8 +105,592 @@
 </div>
 
 <script>
+
+const diagrams = {
+
+"Supply and demand": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="70" y1="55" x2="270" y2="200" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="70" y1="200" x2="270" y2="55" stroke="#b8a07a" stroke-width="2.5"/>
+  <line x1="170" y1="127" x2="170" y2="220" class="ds"/><line x1="50" y1="127" x2="170" y2="127" class="ds"/>
+  <circle cx="170" cy="127" r="4" fill="#fff"/>
+  <text x="275" y="205" class="lb" fill="#7a9cb8">D</text><text x="275" y="60" class="lb" fill="#b8a07a">S</text>
+  <text x="170" y="235" text-anchor="middle">Q*</text><text x="36" y="131" text-anchor="end">P*</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Supply &amp; Demand</text>
+</svg>`,
+
+"Consumer surplus": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="70" y1="55" x2="270" y2="200" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="70" y1="200" x2="270" y2="55" stroke="#b8a07a" stroke-width="2.5"/>
+  <polygon points="50,127 170,127 70,55" fill="#7a9cb8" fill-opacity="0.2"/>
+  <polygon points="50,127 170,127 70,200" fill="#b8a07a" fill-opacity="0.2"/>
+  <line x1="170" y1="127" x2="170" y2="220" class="ds"/><line x1="50" y1="127" x2="170" y2="127" class="ds"/>
+  <circle cx="170" cy="127" r="4" fill="#fff"/>
+  <text x="90" y="100" fill="#7a9cb8" font-size="11">CS</text><text x="90" y="165" fill="#b8a07a" font-size="11">PS</text>
+  <text x="275" y="205" class="lb" fill="#7a9cb8">D</text><text x="275" y="60" class="lb" fill="#b8a07a">S</text>
+  <text x="170" y="235" text-anchor="middle">Q*</text><text x="36" y="131" text-anchor="end">P*</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Consumer &amp; Producer Surplus</text>
+</svg>`,
+
+"Price ceiling": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="70" y1="55" x2="270" y2="200" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="70" y1="200" x2="270" y2="55" stroke="#b8a07a" stroke-width="2.5"/>
+  <line x1="170" y1="127" x2="170" y2="220" class="ds"/><line x1="50" y1="127" x2="170" y2="127" class="ds"/>
+  <line x1="50" y1="92" x2="290" y2="92" stroke="#e07070" stroke-width="2" stroke-dasharray="6,3"/>
+  <line x1="133" y1="92" x2="133" y2="220" class="ds"/>
+  <line x1="207" y1="92" x2="207" y2="220" class="ds"/>
+  <text x="293" y="95" fill="#e07070" font-size="10" font-weight="600">Pmax</text>
+  <text x="128" y="235" text-anchor="middle" font-size="10">Qs</text>
+  <text x="170" y="235" text-anchor="middle" font-size="10">Q*</text>
+  <text x="207" y="235" text-anchor="middle" font-size="10">Qd</text>
+  <text x="36" y="131" text-anchor="end">P*</text>
+  <text x="170" y="210" text-anchor="middle" fill="#e07070" font-size="10">← Shortage →</text>
+  <text x="275" y="205" class="lb" fill="#7a9cb8">D</text><text x="275" y="60" class="lb" fill="#b8a07a">S</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Price Ceiling (Maximum Price)</text>
+</svg>`,
+
+"Price floor": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="70" y1="55" x2="270" y2="200" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="70" y1="200" x2="270" y2="55" stroke="#b8a07a" stroke-width="2.5"/>
+  <line x1="170" y1="127" x2="170" y2="220" class="ds"/><line x1="50" y1="127" x2="170" y2="127" class="ds"/>
+  <line x1="50" y1="162" x2="290" y2="162" stroke="#70c070" stroke-width="2" stroke-dasharray="6,3"/>
+  <line x1="108" y1="162" x2="108" y2="220" class="ds"/>
+  <line x1="232" y1="162" x2="232" y2="220" class="ds"/>
+  <text x="293" y="165" fill="#70c070" font-size="10" font-weight="600">Pmin</text>
+  <text x="103" y="235" text-anchor="middle" font-size="10">Qd</text>
+  <text x="170" y="235" text-anchor="middle" font-size="10">Q*</text>
+  <text x="232" y="235" text-anchor="middle" font-size="10">Qs</text>
+  <text x="36" y="131" text-anchor="end">P*</text>
+  <text x="170" y="210" text-anchor="middle" fill="#70c070" font-size="10">← Surplus →</text>
+  <text x="275" y="205" class="lb" fill="#7a9cb8">D</text><text x="275" y="60" class="lb" fill="#b8a07a">S</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Price Floor (Minimum Price)</text>
+</svg>`,
+
+"Indirect tax": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="70" y1="55" x2="270" y2="200" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="70" y1="200" x2="270" y2="55" stroke="#b8a07a" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="50" y1="165" x2="250" y2="20" stroke="#b8a07a" stroke-width="2.5"/>
+  <line x1="170" y1="127" x2="170" y2="220" class="ds"/>
+  <line x1="145" y1="103" x2="145" y2="220" class="ds"/>
+  <line x1="50" y1="127" x2="170" y2="127" class="ds"/>
+  <line x1="50" y1="103" x2="145" y2="103" class="ds"/>
+  <line x1="50" y1="152" x2="145" y2="152" class="ds"/>
+  <line x1="44" y1="103" x2="44" y2="152" stroke="#e07070" stroke-width="2"/>
+  <text x="5" y="130" fill="#e07070" font-size="9">Tax</text>
+  <rect x="50" y="103" width="95" height="24" fill="#e07070" fill-opacity="0.12"/>
+  <rect x="50" y="127" width="95" height="25" fill="#b8a07a" fill-opacity="0.12"/>
+  <text x="97" y="117" text-anchor="middle" fill="#e07070" font-size="9">Consumer burden</text>
+  <text x="97" y="143" text-anchor="middle" fill="#b8a07a" font-size="9">Producer burden</text>
+  <text x="170" y="235" text-anchor="middle" font-size="10">Qt</text><text x="145" y="235" text-anchor="middle" font-size="10">Q*</text>
+  <text x="275" y="205" class="lb" fill="#7a9cb8">D</text><text x="253" y="24" class="lb" fill="#b8a07a">S+tax</text><text x="275" y="60" fill="#b8a07a" font-size="10">S</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Indirect Tax (Specific)</text>
+</svg>`,
+
+"Subsidy": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="70" y1="55" x2="270" y2="200" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="70" y1="200" x2="270" y2="55" stroke="#b8a07a" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="100" y1="220" x2="290" y2="75" stroke="#70c070" stroke-width="2.5"/>
+  <line x1="170" y1="127" x2="170" y2="220" class="ds"/>
+  <line x1="193" y1="112" x2="193" y2="220" class="ds"/>
+  <line x1="50" y1="127" x2="170" y2="127" class="ds"/><line x1="50" y1="112" x2="193" y2="112" class="ds"/>
+  <line x1="50" y1="143" x2="193" y2="143" class="ds"/>
+  <line x1="44" y1="112" x2="44" y2="143" stroke="#70c070" stroke-width="2"/>
+  <text x="2" y="130" fill="#70c070" font-size="9">Sub</text>
+  <circle cx="170" cy="127" r="3.5" fill="#fff" fill-opacity="0.5"/>
+  <circle cx="193" cy="112" r="4" fill="#fff"/>
+  <text x="275" y="205" class="lb" fill="#7a9cb8">D</text>
+  <text x="284" y="79" class="lb" fill="#70c070">S1</text><text x="275" y="59" fill="#b8a07a" font-size="10">S0</text>
+  <text x="170" y="235" text-anchor="middle" font-size="10">Q0</text><text x="193" y="235" text-anchor="middle" font-size="10">Q1</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Subsidy Effect</text>
+</svg>`,
+
+"Price elasticity of demand": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="70" y1="40" x2="270" y2="210" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="70" y1="130" x2="270" y2="160" stroke="#b8a07a" stroke-width="2.5"/>
+  <text x="272" y="210" fill="#7a9cb8" font-size="11">Inelastic</text>
+  <text x="272" y="158" fill="#b8a07a" font-size="11">Elastic</text>
+  <text x="60" y="38" fill="#7a9cb8" font-size="10">Steep = Inelastic (PED &lt; 1)</text>
+  <text x="60" y="125" fill="#b8a07a" font-size="10">Flat = Elastic (PED &gt; 1)</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Price Elasticity of Demand</text>
+</svg>`,
+
+"Price elasticity of supply": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="80" y1="210" x2="200" y2="30" stroke="#b8a07a" stroke-width="2.5"/>
+  <line x1="60" y1="210" x2="270" y2="100" stroke="#70c070" stroke-width="2.5"/>
+  <text x="200" y="28" fill="#b8a07a" font-size="11">Inelastic</text>
+  <text x="272" y="100" fill="#70c070" font-size="11">Elastic</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Price Elasticity of Supply</text>
+</svg>`,
+
+"Negative externality": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="70" y1="55" x2="270" y2="200" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="70" y1="200" x2="270" y2="55" stroke="#b8a07a" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="70" y1="165" x2="270" y2="20" stroke="#e07070" stroke-width="2.5"/>
+  <line x1="170" y1="127" x2="170" y2="220" class="ds"/>
+  <line x1="140" y1="108" x2="140" y2="220" class="ds"/>
+  <polygon points="140,108 170,127 140,127" fill="#e07070" fill-opacity="0.3"/>
+  <circle cx="170" cy="127" r="3.5" fill="#fff" fill-opacity="0.6"/>
+  <circle cx="140" cy="108" r="3.5" fill="#fff"/>
+  <text x="272" y="200" class="lb" fill="#7a9cb8">MSB</text>
+  <text x="262" y="24" class="lb" fill="#e07070">MSC</text>
+  <text x="265" y="60" fill="#b8a07a" font-size="10">MPC</text>
+  <text x="135" y="235" text-anchor="middle" font-size="10">Qopt</text>
+  <text x="170" y="235" text-anchor="middle" font-size="10">Qm</text>
+  <text x="153" y="122" fill="#e07070" font-size="9">WL</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Negative Production Externality</text>
+</svg>`,
+
+"Positive externality": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="70" y1="200" x2="270" y2="55" stroke="#b8a07a" stroke-width="2.5"/>
+  <line x1="70" y1="55" x2="270" y2="200" stroke="#7a9cb8" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="95" y1="55" x2="280" y2="190" stroke="#70c070" stroke-width="2.5"/>
+  <line x1="170" y1="127" x2="170" y2="220" class="ds"/>
+  <line x1="200" y1="113" x2="200" y2="220" class="ds"/>
+  <polygon points="170,127 200,113 200,127" fill="#70c070" fill-opacity="0.3"/>
+  <circle cx="170" cy="127" r="3.5" fill="#fff" fill-opacity="0.6"/>
+  <circle cx="200" cy="113" r="3.5" fill="#fff"/>
+  <text x="253" y="192" class="lb" fill="#70c070">MSB</text>
+  <text x="272" y="200" class="lb" fill="#7a9cb8">MPB</text>
+  <text x="272" y="58" class="lb" fill="#b8a07a">S</text>
+  <text x="165" y="235" text-anchor="middle" font-size="10">Qm</text>
+  <text x="200" y="235" text-anchor="middle" font-size="10">Qopt</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Positive Externality</text>
+</svg>`,
+
+"Perfect competition": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="50" y1="120" x2="290" y2="120" stroke="#7a9cb8" stroke-width="2.5"/>
+  <path d="M 80 195 Q 140 60 195 120 Q 240 162 270 105" stroke="#b8a07a" stroke-width="2.5" fill="none"/>
+  <path d="M 80 185 Q 148 95 195 120 Q 238 142 270 132" stroke="#777" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
+  <line x1="195" y1="120" x2="195" y2="220" class="ds"/>
+  <circle cx="195" cy="120" r="4" fill="#fff"/>
+  <text x="278" y="118" class="lb" fill="#7a9cb8">P=MR=AR</text>
+  <text x="268" y="104" fill="#b8a07a" font-size="11">MC</text>
+  <text x="268" y="134" fill="#777" font-size="10">ATC</text>
+  <text x="195" y="235" text-anchor="middle">Q*</text>
+  <text x="36" y="123" text-anchor="end">P*</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Perfect Competition (LR)</text>
+</svg>`,
+
+"Monopoly": `<svg viewBox="0 0 320 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="230" class="ax"/><line x1="50" y1="230" x2="300" y2="230" class="ax"/>
+  <line x1="60" y1="40" x2="280" y2="220" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="60" y1="40" x2="170" y2="220" stroke="#7a9cb8" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="50" y1="150" x2="300" y2="150" stroke="#b8a07a" stroke-width="2.5"/>
+  <line x1="115" y1="130" x2="115" y2="230" class="ds"/>
+  <line x1="50" y1="130" x2="115" y2="130" class="ds"/>
+  <line x1="50" y1="107" x2="115" y2="107" class="ds"/>
+  <rect x="50" y="107" width="65" height="43" fill="#b8a07a" fill-opacity="0.15"/>
+  <polygon points="115,107 115,150 175,150" fill="#e07070" fill-opacity="0.25"/>
+  <circle cx="115" cy="107" r="4" fill="#fff"/>
+  <text x="282" y="218" class="lb" fill="#7a9cb8">AR=D</text>
+  <text x="172" y="218" fill="#7a9cb8" font-size="10">MR</text>
+  <text x="284" y="148" class="lb" fill="#b8a07a">MC</text>
+  <text x="110" y="246" text-anchor="middle">Qm</text>
+  <text x="36" y="110" text-anchor="end">Pm</text>
+  <text x="36" y="153" text-anchor="end">Pc</text>
+  <text x="78" y="132" fill="#b8a07a" font-size="9" text-anchor="middle">Profit</text>
+  <text x="135" y="140" fill="#e07070" font-size="9">DWL</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Monopoly Equilibrium</text>
+</svg>`,
+
+"Monopolistic competition": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="65" y1="50" x2="260" y2="200" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="65" y1="50" x2="162" y2="200" stroke="#7a9cb8" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <path d="M 70 190 Q 128 80 172 113 Q 218 148 258 110" stroke="#b8a07a" stroke-width="2.5" fill="none"/>
+  <path d="M 70 175 Q 138 98 172 113 Q 212 128 258 118" stroke="#777" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
+  <line x1="138" y1="113" x2="138" y2="220" class="ds"/>
+  <line x1="50" y1="113" x2="138" y2="113" class="ds"/>
+  <circle cx="138" cy="113" r="4" fill="#fff"/>
+  <text x="262" y="202" class="lb" fill="#7a9cb8">D</text>
+  <text x="163" y="200" fill="#7a9cb8" font-size="10">MR</text>
+  <text x="256" y="110" class="lb" fill="#b8a07a">MC</text>
+  <text x="256" y="120" fill="#777" font-size="10">ATC</text>
+  <text x="138" y="235" text-anchor="middle">Q*</text><text x="36" y="116" text-anchor="end">P*</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Monopolistic Competition (LR)</text>
+</svg>`,
+
+"Oligopoly": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="60" y1="60" x2="170" y2="110" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="170" y1="110" x2="280" y2="195" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="60" y1="60" x2="118" y2="162" stroke="#7a9cb8" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="170" y1="185" x2="238" y2="220" stroke="#7a9cb8" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="50" y1="130" x2="290" y2="130" stroke="#b8a07a" stroke-width="2"/>
+  <line x1="170" y1="110" x2="170" y2="220" class="ds"/>
+  <line x1="50" y1="110" x2="170" y2="110" class="ds"/>
+  <circle cx="170" cy="110" r="5" fill="#fff"/>
+  <line x1="170" y1="162" x2="170" y2="185" stroke="#e07070" stroke-width="2.5"/>
+  <text x="175" y="176" fill="#e07070" font-size="9">MR gap</text>
+  <text x="282" y="197" class="lb" fill="#7a9cb8">D</text>
+  <text x="241" y="218" fill="#7a9cb8" font-size="10">MR</text>
+  <text x="282" y="128" class="lb" fill="#b8a07a">MC</text>
+  <text x="170" y="235" text-anchor="middle">Q*</text><text x="36" y="113" text-anchor="end">P*</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Oligopoly — Kinked Demand Curve</text>
+</svg>`,
+
+"Price discrimination": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="60" y1="40" x2="270" y2="210" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="50" y1="150" x2="290" y2="150" stroke="#b8a07a" stroke-width="2"/>
+  <line x1="165" y1="20" x2="165" y2="210" stroke="#555" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="105" y1="96" x2="105" y2="220" class="ds"/>
+  <line x1="50" y1="96" x2="105" y2="96" class="ds"/>
+  <line x1="215" y1="126" x2="215" y2="220" class="ds"/>
+  <line x1="165" y1="126" x2="215" y2="126" class="ds"/>
+  <rect x="50" y="96" width="55" height="54" fill="#b8a07a" fill-opacity="0.12"/>
+  <rect x="165" y="126" width="50" height="24" fill="#7a9cb8" fill-opacity="0.12"/>
+  <text x="77" y="120" text-anchor="middle" fill="#b8a07a" font-size="9">Market 1</text>
+  <text x="190" y="140" text-anchor="middle" fill="#7a9cb8" font-size="9">Market 2</text>
+  <text x="36" y="99" text-anchor="end">P1</text><text x="36" y="129" text-anchor="end">P2</text>
+  <text x="272" y="210" class="lb" fill="#7a9cb8">D</text>
+  <text x="272" y="148" class="lb" fill="#b8a07a">MC</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Price Discrimination (3rd Degree)</text>
+</svg>`,
+
+"Nash equilibrium": `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}</style>
+  <rect x="30" y="60" width="240" height="150" fill="none" stroke="#333" stroke-width="1.5" rx="4"/>
+  <line x1="150" y1="60" x2="150" y2="210" stroke="#333" stroke-width="1"/>
+  <line x1="30" y1="135" x2="270" y2="135" stroke="#333" stroke-width="1"/>
+  <text x="200" y="50" text-anchor="middle" fill="#b8a07a" font-weight="600">Firm B</text>
+  <text x="200" y="78" text-anchor="middle" fill="#888" font-size="10">Low Price</text>
+  <text x="200" y="160" text-anchor="middle" fill="#888" font-size="10">High Price</text>
+  <text x="85" y="95" text-anchor="middle" fill="#7a9cb8" font-size="10">Low</text>
+  <text x="85" y="168" text-anchor="middle" fill="#7a9cb8" font-size="10">High</text>
+  <text x="45" y="135" fill="#7a9cb8" font-weight="600" transform="rotate(-90,45,135)" font-size="11" text-anchor="middle">Firm A</text>
+  <text x="200" y="105" text-anchor="middle" fill="#e07070" font-size="13" font-weight="600">3, 3</text>
+  <text x="200" y="175" text-anchor="middle" fill="#888" font-size="13">1, 5</text>
+  <text x="85" y="105" text-anchor="middle" fill="#888" font-size="13">5, 1</text>
+  <text x="85" y="175" text-anchor="middle" fill="#888" font-size="13">4, 4</text>
+  <rect x="152" y="62" width="116" height="71" fill="#e07070" fill-opacity="0.08" stroke="#e07070" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="200" y="122" text-anchor="middle" fill="#e07070" font-size="9">Nash Eq.</text>
+  <text x="150" y="15" text-anchor="middle" class="lb">Game Theory — Payoff Matrix</text>
+  <text x="150" y="228" text-anchor="middle" fill="#666" font-size="10">Dominant strategy: Low Price → Prisoner's Dilemma</text>
+</svg>`,
+
+"Lorenz curve": `<svg viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}</style>
+  <line x1="50" y1="30" x2="50" y2="230" class="ax"/><line x1="50" y1="230" x2="260" y2="230" class="ax"/>
+  <line x1="50" y1="230" x2="260" y2="30" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <path d="M 50 230 Q 118 230 178 180 Q 218 140 260 30" stroke="#7a9cb8" stroke-width="2.5" fill="none"/>
+  <path d="M 50 230 L 260 30 Q 218 140 178 180 Q 118 230 50 230 Z" fill="#b8a07a" fill-opacity="0.15"/>
+  <path d="M 50 230 Q 118 230 178 180 Q 218 140 260 30 L 260 230 Z" fill="#7a9cb8" fill-opacity="0.1"/>
+  <text x="135" y="108" fill="#b8a07a" font-size="13" font-weight="600" text-anchor="middle">A</text>
+  <text x="200" y="195" fill="#7a9cb8" font-size="13" font-weight="600" text-anchor="middle">B</text>
+  <text x="155" y="175" fill="#ccc" font-size="11" text-anchor="middle">Gini = A/(A+B)</text>
+  <text x="266" y="28" fill="#666" font-size="10">Line of equality</text>
+  <text x="210" y="155" fill="#7a9cb8" font-size="11">Lorenz Curve</text>
+  <text x="25" y="135" transform="rotate(-90,25,135)" text-anchor="middle" fill="#666">% Income</text>
+  <text x="155" y="248" text-anchor="middle" fill="#666">% Population</text>
+  <text x="155" y="18" text-anchor="middle" class="lb">Lorenz Curve &amp; Gini Coefficient</text>
+</svg>`,
+
+"Gini coefficient": `<svg viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}</style>
+  <line x1="50" y1="30" x2="50" y2="230" class="ax"/><line x1="50" y1="230" x2="260" y2="230" class="ax"/>
+  <line x1="50" y1="230" x2="260" y2="30" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <path d="M 50 230 Q 118 230 178 180 Q 218 140 260 30" stroke="#7a9cb8" stroke-width="2.5" fill="none"/>
+  <path d="M 50 230 L 260 30 Q 218 140 178 180 Q 118 230 50 230 Z" fill="#b8a07a" fill-opacity="0.15"/>
+  <path d="M 50 230 Q 118 230 178 180 Q 218 140 260 30 L 260 230 Z" fill="#7a9cb8" fill-opacity="0.1"/>
+  <text x="135" y="108" fill="#b8a07a" font-size="13" font-weight="600" text-anchor="middle">A</text>
+  <text x="200" y="195" fill="#7a9cb8" font-size="13" font-weight="600" text-anchor="middle">B</text>
+  <text x="155" y="175" fill="#ccc" font-size="11" text-anchor="middle">Gini = A/(A+B)</text>
+  <text x="25" y="135" transform="rotate(-90,25,135)" text-anchor="middle" fill="#666">% Income</text>
+  <text x="155" y="248" text-anchor="middle" fill="#666">% Population</text>
+  <text x="155" y="18" text-anchor="middle" class="lb">Gini Coefficient</text>
+</svg>`,
+
+"Aggregate demand": `<svg viewBox="0 0 320 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="235" class="ax"/><line x1="50" y1="235" x2="295" y2="235" class="ax"/>
+  <line x1="185" y1="25" x2="185" y2="230" stroke="#e07070" stroke-width="2"/>
+  <line x1="60" y1="220" x2="260" y2="40" stroke="#b8a07a" stroke-width="2.5"/>
+  <line x1="65" y1="60" x2="265" y2="210" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="165" y1="120" x2="165" y2="235" class="ds"/>
+  <line x1="50" y1="120" x2="165" y2="120" class="ds"/>
+  <circle cx="165" cy="120" r="4" fill="#fff"/>
+  <text x="189" y="28" fill="#e07070" font-size="11">LRAS</text>
+  <text x="258" y="38" class="lb" fill="#b8a07a">SRAS</text>
+  <text x="268" y="208" class="lb" fill="#7a9cb8">AD</text>
+  <text x="160" y="250" text-anchor="middle">Yfe</text>
+  <text x="36" y="123" text-anchor="end">PL*</text>
+  <text x="25" y="135" transform="rotate(-90,25,135)" text-anchor="middle" fill="#666">Price Level</text>
+  <text x="170" y="260" text-anchor="middle" fill="#666">Real GDP</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">AD / AS Model</text>
+</svg>`,
+
+"Business cycle": `<svg viewBox="0 0 340 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}</style>
+  <line x1="40" y1="20" x2="40" y2="210" class="ax"/><line x1="40" y1="210" x2="320" y2="210" class="ax"/>
+  <line x1="40" y1="130" x2="320" y2="130" stroke="#555" stroke-width="1" stroke-dasharray="5,3"/>
+  <path d="M 50 150 Q 80 160 110 100 Q 140 40 170 90 Q 200 140 230 80 Q 260 30 290 70 Q 310 90 320 85" stroke="#7a9cb8" stroke-width="2.5" fill="none"/>
+  <text x="110" y="36" text-anchor="middle" fill="#7a9cb8" font-size="10">Peak</text>
+  <text x="170" y="108" text-anchor="middle" fill="#888" font-size="10">Trough</text>
+  <text x="230" y="76" text-anchor="middle" fill="#7a9cb8" font-size="10">Peak</text>
+  <text x="295" y="66" fill="#7a9cb8" font-size="10">Trend</text>
+  <text x="180" y="128" fill="#666" font-size="10">Potential/trend GDP</text>
+  <text x="25" y="115" transform="rotate(-90,25,115)" text-anchor="middle" fill="#666">Real GDP</text>
+  <text x="180" y="225" text-anchor="middle" fill="#666">Time</text>
+  <text x="80" y="165" fill="#888" font-size="10">Recovery</text>
+  <text x="130" y="160" fill="#888" font-size="10">→</text>
+  <text x="180" y="14" text-anchor="middle" class="lb">Business Cycle</text>
+</svg>`,
+
+"Phillips curve": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}</style>
+  <line x1="50" y1="20" x2="50" y2="230" class="ax"/><line x1="50" y1="230" x2="290" y2="230" class="ax"/>
+  <path d="M 80 50 Q 130 125 230 210" stroke="#7a9cb8" stroke-width="2.5" fill="none"/>
+  <path d="M 140 50 Q 185 125 280 210" stroke="#7a9cb8" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+  <line x1="165" y1="25" x2="165" y2="225" stroke="#e07070" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="84" y="50" fill="#7a9cb8" font-size="10">SRPC1</text>
+  <text x="145" y="50" fill="#7a9cb8" font-size="10">SRPC2</text>
+  <text x="168" y="28" fill="#e07070" font-size="11">LRPC</text>
+  <text x="165" y="243" text-anchor="middle" fill="#888" font-size="10">NRU</text>
+  <text x="25" y="125" transform="rotate(-90,25,125)" text-anchor="middle" fill="#666">Inflation (%)</text>
+  <text x="170" y="248" text-anchor="middle" fill="#666">Unemployment (%)</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Phillips Curve (SR &amp; LR)</text>
+</svg>`,
+
+"Circular flow of income": `<svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:10px}.lb{fill:#bbb;font-size:12px;font-weight:600}</style>
+  <rect x="20" y="110" width="90" height="50" rx="6" fill="#161616" stroke="#333" stroke-width="1.5"/>
+  <rect x="210" y="110" width="90" height="50" rx="6" fill="#161616" stroke="#333" stroke-width="1.5"/>
+  <text x="65" y="132" text-anchor="middle" fill="#bbb" font-weight="600" font-size="11">Households</text>
+  <text x="255" y="132" text-anchor="middle" fill="#bbb" font-weight="600" font-size="11">Firms</text>
+  <path d="M 110 120 Q 160 80 210 120" stroke="#7a9cb8" stroke-width="2" fill="none" marker-end="url(#blue)"/>
+  <path d="M 210 150 Q 160 195 110 150" stroke="#b8a07a" stroke-width="2" fill="none" marker-end="url(#gold)"/>
+  <text x="160" y="75" text-anchor="middle" fill="#7a9cb8" font-size="10">Factor payments (wages, rent)</text>
+  <text x="160" y="205" text-anchor="middle" fill="#b8a07a" font-size="10">Consumer spending</text>
+  <rect x="125" y="30" width="70" height="35" rx="4" fill="#161616" stroke="#333"/>
+  <text x="160" y="45" text-anchor="middle" fill="#888" font-size="10">Banks/</text>
+  <text x="160" y="57" text-anchor="middle" fill="#888" font-size="10">Gov't/Foreign</text>
+  <line x1="65" y1="110" x2="65" y2="65" stroke="#555" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="65" y1="65" x2="125" y2="50" stroke="#555" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="255" y1="65" x2="195" y2="50" stroke="#555" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="255" y1="110" x2="255" y2="65" stroke="#555" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <text x="40" y="88" fill="#666" font-size="9">S,T,M</text>
+  <text x="240" y="88" fill="#666" font-size="9">I,G,X</text>
+  <text x="160" y="14" text-anchor="middle" class="lb">Circular Flow of Income</text>
+</svg>`,
+
+"Comparative advantage": `<svg viewBox="0 0 340 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}</style>
+  <g transform="translate(15,30)">
+    <line x1="20" y1="10" x2="20" y2="120" class="ax"/><line x1="20" y1="120" x2="130" y2="120" class="ax"/>
+    <line x1="20" y1="20" x2="120" y2="120" stroke="#7a9cb8" stroke-width="2.5"/>
+    <text x="75" y="140" text-anchor="middle" fill="#666" font-size="10">Cloth</text>
+    <text x="8" y="70" transform="rotate(-90,8,70)" text-anchor="middle" fill="#666" font-size="10">Food</text>
+    <text x="75" y="8" text-anchor="middle" fill="#bbb" font-size="12" font-weight="600">Country A</text>
+    <text x="123" y="123" fill="#7a9cb8" font-size="10">PPC</text>
+    <text x="22" y="22" fill="#888" font-size="9">100</text>
+    <text x="120" y="132" fill="#888" font-size="9">100</text>
+  </g>
+  <g transform="translate(185,30)">
+    <line x1="20" y1="10" x2="20" y2="120" class="ax"/><line x1="20" y1="120" x2="130" y2="120" class="ax"/>
+    <line x1="20" y1="65" x2="120" y2="120" stroke="#b8a07a" stroke-width="2.5"/>
+    <text x="75" y="140" text-anchor="middle" fill="#666" font-size="10">Cloth</text>
+    <text x="8" y="70" transform="rotate(-90,8,70)" text-anchor="middle" fill="#666" font-size="10">Food</text>
+    <text x="75" y="8" text-anchor="middle" fill="#bbb" font-size="12" font-weight="600">Country B</text>
+    <text x="123" y="123" fill="#b8a07a" font-size="10">PPC</text>
+    <text x="22" y="67" fill="#888" font-size="9">50</text>
+    <text x="120" y="132" fill="#888" font-size="9">100</text>
+  </g>
+  <text x="170" y="215" text-anchor="middle" fill="#888" font-size="11">Different opportunity costs = basis for trade</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Comparative Advantage (PPCs)</text>
+</svg>`,
+
+"Tariff": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="65" y1="50" x2="265" y2="200" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="65" y1="200" x2="265" y2="50" stroke="#b8a07a" stroke-width="2.5"/>
+  <line x1="50" y1="160" x2="290" y2="160" stroke="#777" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="50" y1="140" x2="290" y2="140" stroke="#e07070" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="100" y1="160" x2="100" y2="220" class="ds"/>
+  <line x1="130" y1="140" x2="130" y2="220" class="ds"/>
+  <line x1="200" y1="140" x2="200" y2="220" class="ds"/>
+  <line x1="225" y1="160" x2="225" y2="220" class="ds"/>
+  <rect x="100" y="140" width="30" height="20" fill="#b8a07a" fill-opacity="0.15"/>
+  <rect x="200" y="140" width="25" height="20" fill="#b8a07a" fill-opacity="0.15"/>
+  <polygon points="130,140 200,140 200,160 130,160" fill="#e07070" fill-opacity="0.12"/>
+  <line x1="44" y1="140" x2="44" y2="160" stroke="#e07070" stroke-width="2"/>
+  <text x="10" y="152" fill="#e07070" font-size="9">Tariff</text>
+  <text x="295" y="163" fill="#777" font-size="10">Pw</text>
+  <text x="295" y="143" fill="#e07070" font-size="10">Pt</text>
+  <text x="272" y="202" class="lb" fill="#7a9cb8">D</text>
+  <text x="272" y="52" class="lb" fill="#b8a07a">S</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Tariff Effects</text>
+</svg>`,
+
+"Exchange rate": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="70" y1="55" x2="270" y2="200" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="70" y1="200" x2="270" y2="55" stroke="#b8a07a" stroke-width="2.5"/>
+  <line x1="170" y1="127" x2="170" y2="220" class="ds"/><line x1="50" y1="127" x2="170" y2="127" class="ds"/>
+  <circle cx="170" cy="127" r="4" fill="#fff"/>
+  <text x="275" y="200" class="lb" fill="#7a9cb8">D(£)</text>
+  <text x="275" y="58" class="lb" fill="#b8a07a">S(£)</text>
+  <text x="170" y="235" text-anchor="middle">Q*</text>
+  <text x="36" y="130" text-anchor="end">E*</text>
+  <text x="25" y="125" transform="rotate(-90,25,125)" text-anchor="middle" fill="#666">Exchange Rate</text>
+  <text x="170" y="248" text-anchor="middle" fill="#666">Quantity of Currency</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Floating Exchange Rate</text>
+</svg>`,
+
+"Merit good": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="70" y1="200" x2="270" y2="55" stroke="#b8a07a" stroke-width="2.5"/>
+  <line x1="70" y1="55" x2="270" y2="200" stroke="#7a9cb8" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="100" y1="55" x2="285" y2="190" stroke="#70c070" stroke-width="2.5"/>
+  <line x1="170" y1="127" x2="170" y2="220" class="ds"/>
+  <line x1="200" y1="113" x2="200" y2="220" class="ds"/>
+  <polygon points="170,127 200,113 200,127" fill="#70c070" fill-opacity="0.3"/>
+  <circle cx="170" cy="127" r="3.5" fill="#fff" fill-opacity="0.5"/>
+  <circle cx="200" cy="113" r="3.5" fill="#fff"/>
+  <text x="261" y="57" class="lb" fill="#70c070">MSB</text>
+  <text x="272" y="198" class="lb" fill="#7a9cb8">MPB</text>
+  <text x="272" y="58" class="lb" fill="#b8a07a">S</text>
+  <text x="165" y="235" text-anchor="middle" font-size="10">Qm</text>
+  <text x="200" y="235" text-anchor="middle" font-size="10">Qopt</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Merit Good (Under-consumed)</text>
+</svg>`,
+
+"Demerit good": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="70" y1="200" x2="270" y2="55" stroke="#b8a07a" stroke-width="2.5"/>
+  <line x1="70" y1="55" x2="270" y2="200" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="50" y1="55" x2="245" y2="200" stroke="#e07070" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="170" y1="127" x2="170" y2="220" class="ds"/>
+  <line x1="138" y1="115" x2="138" y2="220" class="ds"/>
+  <polygon points="138,115 170,127 138,127" fill="#e07070" fill-opacity="0.3"/>
+  <circle cx="170" cy="127" r="3.5" fill="#fff"/>
+  <circle cx="138" cy="115" r="3.5" fill="#fff" fill-opacity="0.5"/>
+  <text x="248" y="200" class="lb" fill="#e07070">MSB</text>
+  <text x="272" y="200" class="lb" fill="#7a9cb8">MPB</text>
+  <text x="272" y="58" class="lb" fill="#b8a07a">S</text>
+  <text x="165" y="235" text-anchor="middle" font-size="10">Qm</text>
+  <text x="133" y="235" text-anchor="middle" font-size="10">Qopt</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Demerit Good (Over-consumed)</text>
+</svg>`,
+
+"Production possibility curve": `<svg viewBox="0 0 280 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="250" y2="220" class="ax"/>
+  <path d="M 50 35 Q 130 45 225 220" stroke="#7a9cb8" stroke-width="2.5" fill="none"/>
+  <circle cx="115" cy="155" r="4" fill="#777"/>
+  <text x="120" y="152" fill="#777" font-size="10">Inefficient</text>
+  <circle cx="148" cy="110" r="4" fill="#b8a07a"/>
+  <text x="153" y="108" fill="#b8a07a" font-size="10">Efficient</text>
+  <circle cx="185" cy="95" r="4" fill="#e07070"/>
+  <text x="190" y="92" fill="#e07070" font-size="10">Unattainable</text>
+  <text x="28" y="125" transform="rotate(-90,28,125)" text-anchor="middle" fill="#666">Good Y</text>
+  <text x="148" y="238" text-anchor="middle" fill="#666">Good X</text>
+  <text x="140" y="14" text-anchor="middle" class="lb">Production Possibility Curve</text>
+</svg>`,
+
+"Keynesian multiplier": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="235" class="ax"/><line x1="50" y1="235" x2="295" y2="235" class="ax"/>
+  <line x1="185" y1="25" x2="185" y2="230" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="230" y1="25" x2="230" y2="230" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="60" y1="220" x2="260" y2="40" stroke="#b8a07a" stroke-width="2"/>
+  <line x1="80" y1="220" x2="280" y2="40" stroke="#b8a07a" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="65" y1="60" x2="265" y2="210" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="165" y1="122" x2="165" y2="235" class="ds"/>
+  <line x1="207" y1="108" x2="207" y2="235" class="ds"/>
+  <circle cx="165" cy="122" r="3.5" fill="#fff" fill-opacity="0.5"/>
+  <circle cx="207" cy="108" r="3.5" fill="#fff"/>
+  <line x1="165" y1="230" x2="207" y2="230" stroke="#70c070" stroke-width="2"/>
+  <text x="186" y="227" text-anchor="middle" fill="#70c070" font-size="9">ΔY &gt; ΔG</text>
+  <text x="258" y="38" class="lb" fill="#b8a07a">SRAS1</text>
+  <text x="278" y="40" fill="#b8a07a" font-size="10">SRAS0</text>
+  <text x="268" y="208" class="lb" fill="#7a9cb8">AD1</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Multiplier Effect (AD shift)</text>
+</svg>`,
+
+"Inflationary gap": `<svg viewBox="0 0 320 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="235" class="ax"/><line x1="50" y1="235" x2="295" y2="235" class="ax"/>
+  <line x1="175" y1="25" x2="175" y2="230" stroke="#e07070" stroke-width="2"/>
+  <line x1="60" y1="220" x2="260" y2="40" stroke="#b8a07a" stroke-width="2.5"/>
+  <line x1="65" y1="60" x2="265" y2="210" stroke="#7a9cb8" stroke-width="2.5"/>
+  <line x1="65" y1="45" x2="255" y2="195" stroke="#7a9cb8" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="162" y1="118" x2="162" y2="235" class="ds"/>
+  <line x1="50" y1="100" x2="175" y2="100" class="ds"/>
+  <line x1="50" y1="118" x2="162" y2="118" class="ds"/>
+  <line x1="44" y1="100" x2="44" y2="118" stroke="#e07070" stroke-width="2"/>
+  <text x="2" y="112" fill="#e07070" font-size="9">Gap</text>
+  <text x="179" y="28" fill="#e07070" font-size="11">LRAS</text>
+  <text x="258" y="38" class="lb" fill="#b8a07a">SRAS</text>
+  <text x="258" y="193" class="lb" fill="#7a9cb8">AD1</text>
+  <text x="248" y="198" fill="#7a9cb8" font-size="10">AD0</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">Inflationary Gap</text>
+</svg>`,
+
+"J-curve": `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="290" y2="220" class="ax"/>
+  <line x1="50" y1="130" x2="290" y2="130" stroke="#444" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="130" y1="20" x2="130" y2="220" stroke="#444" stroke-width="1" stroke-dasharray="4,3"/>
+  <path d="M 55 130 Q 90 135 130 175 Q 155 200 180 170 Q 220 120 280 60" stroke="#7a9cb8" stroke-width="2.5" fill="none"/>
+  <text x="133" y="218" fill="#888" font-size="10">Depreciation</text>
+  <text x="280" y="55" fill="#7a9cb8" font-size="10">CA improves</text>
+  <text x="155" y="195" fill="#e07070" font-size="10">CA worsens</text>
+  <text x="36" y="133" text-anchor="end">0</text>
+  <text x="25" y="125" transform="rotate(-90,25,125)" text-anchor="middle" fill="#666">Current Account</text>
+  <text x="170" y="248" text-anchor="middle" fill="#666">Time</text>
+  <text x="170" y="14" text-anchor="middle" class="lb">J-Curve Effect</text>
+</svg>`,
+
+"Laffer curve": `<svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:.8rem auto">
+  <style>text{font-family:'DM Sans',sans-serif;fill:#888;font-size:11px}.lb{fill:#bbb;font-size:12px;font-weight:600}.ax{stroke:#333;stroke-width:1.5}.ds{stroke-dasharray:4,3;stroke:#555;stroke-width:1}</style>
+  <line x1="50" y1="20" x2="50" y2="220" class="ax"/><line x1="50" y1="220" x2="270" y2="220" class="ax"/>
+  <path d="M 50 220 Q 100 50 160 40 Q 210 35 260 220" stroke="#7a9cb8" stroke-width="2.5" fill="none"/>
+  <line x1="160" y1="40" x2="160" y2="220" class="ds"/>
+  <circle cx="160" cy="40" r="4" fill="#fff"/>
+  <text x="155" y="235" text-anchor="middle">T*</text>
+  <text x="163" y="38" fill="#bbb" font-size="10">Revenue max</text>
+  <text x="50" y="235" text-anchor="middle" font-size="10">0%</text>
+  <text x="260" y="235" text-anchor="middle" font-size="10">100%</text>
+  <text x="25" y="125" transform="rotate(-90,25,125)" text-anchor="middle" fill="#666">Tax Revenue</text>
+  <text x="155" y="248" text-anchor="middle" fill="#666">Tax Rate (%)</text>
+  <text x="155" y="14" text-anchor="middle" class="lb">Laffer Curve</text>
+</svg>`
+
+};
+
+
 const econTerms = [
-  { title: "Abnormal profit", def: "When a firm's average revenue is greater than its average costs." },
+{ title: "Abnormal profit", def: "When a firm's average revenue is greater than its average costs." },
   { title: "Absolute Advantage", def: "The ability to produce the same quantity of a good or service using fewer resources per unit of time." },
   { title: "Absolute poverty", def: "The inability to afford the basic goods and services required to meet essential needs, when measured in relation to a fixed poverty line that indicates the minimum income required to cover basic necessities." },
   { title: "Administrative Barriers", def: "Bureaucratic rules and regulations imposed by governments to restrict imports and protect domestic industries." },
@@ -519,7 +890,7 @@ const econTerms = [
 ];
 
 const bioTerms = [
-  { title: "70S Ribosomes", def: "Small ribosomes found in prokaryotic cells, as well as in the mitochondria and chloroplasts of eukaryotic cells. They are responsible for protein synthesis, translating mRNA into functional proteins." },
+{ title: "70S Ribosomes", def: "Small ribosomes found in prokaryotic cells, as well as in the mitochondria and chloroplasts of eukaryotic cells. They are responsible for protein synthesis, translating mRNA into functional proteins." },
   { title: "80S Ribosomes", def: "Larger ribosomes found in eukaryotic cells that synthesize proteins." },
   { title: "Abiogenesis", def: "The origin of life from non-living matter, such as simple organic compounds." },
   { title: "Abiotic factors", def: "Non-living components of the environment such as temperature, light, water availability, salinity, and soil type that influence the survival and reproduction of organisms." },
@@ -914,8 +1285,7 @@ function goHome() {
 }
 
 function renderChips(suggestions) {
-  const c = document.getElementById('chipsContainer');
-  c.innerHTML = suggestions.map(s =>
+  document.getElementById('chipsContainer').innerHTML = suggestions.map(s =>
     `<button class="chip" onclick="setSearch('${s}')">${s}</button>`
   ).join('');
 }
@@ -923,6 +1293,11 @@ function renderChips(suggestions) {
 function setSearch(value) {
   document.getElementById('searchInput').value = value;
   doSearch();
+}
+
+function getDiagram(title) {
+  const key = Object.keys(diagrams).find(k => title.toLowerCase().includes(k.toLowerCase()) || k.toLowerCase().includes(title.toLowerCase()));
+  return key ? diagrams[key] : null;
 }
 
 function doSearch() {
@@ -939,9 +1314,11 @@ function doSearch() {
     cards.innerHTML = `<div class="empty">No terms found for "<strong>${q}</strong>"</div>`;
     return;
   }
-  cards.innerHTML = results.map(t =>
-    `<div class="card"><div class="card-title">${t.title}</div><div class="card-def">${t.def}</div></div>`
-  ).join('');
+  cards.innerHTML = results.map(t => {
+    const diag = currentSubject === 'econ' ? getDiagram(t.title) : null;
+    const diagHtml = diag ? `<div class="card-diagram"><div class="diagram-label">Diagram</div>${diag}</div>` : '';
+    return `<div class="card"><div class="card-title">${t.title}</div><div class="card-def">${t.def}</div>${diagHtml}</div>`;
+  }).join('');
 }
 
 document.getElementById('searchInput').addEventListener('input', doSearch);
